@@ -1,21 +1,41 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { createStackNavigator } from 'react-navigation';
+import { Root } from 'native-base';
+import Expo from "expo";
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
-    );
-  }
-}
+// Views
+import InicioView from './src/views/Inicio';
+import ChatView from './src/views/Chat';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+
+const Menu = createStackNavigator(
+
+  {
+    Inicio : InicioView,
+    Chat: ChatView,
   },
-});
+  {
+    initialRouteName : 'Inicio',
+
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor : "#0288d1"
+      },
+      headerTintColor: '#fff',
+    }
+  }
+
+);
+
+
+export default() =>
+  <Root>
+      <Menu/>
+  </Root>
+
+    
+
+
+
+
